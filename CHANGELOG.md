@@ -1,5 +1,11 @@
 # proxZ
 
+## 0.1.2
+
+### Patch Changes
+
+- 5bf98dd: package name changed
+
 ## 0.1.1
 
 ### Patch Changes
