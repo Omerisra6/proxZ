@@ -1,6 +1,6 @@
 # Proxzy
 
-Proxzy is a fully types simple state management library that uses the Proxy API to manage the state of your application.
+Proxzy is a fully typed simple state management library that uses the Proxy API to manage the state of your application.
 
 ## Installation
 

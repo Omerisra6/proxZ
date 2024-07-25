@@ -1,0 +1,5 @@
+---
+'proxzy': patch
+---
+
+readme updated
