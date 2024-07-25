@@ -1,24 +1,24 @@
-# ProxZ
+# Proxzy
 
-ProxZ is a fully types simple state management library that uses the Proxy API to manage the state of your application.
+Proxzy is a fully types simple state management library that uses the Proxy API to manage the state of your application.
 
 ## Installation
 
 ```bash
-npm install proxz
+npm install proxzy
 ```
 
 ## Usage
 
-The `proxZ` function takes an object as an argument and returns a Proxy object.
+The `proxzy` function takes an object as an argument and returns a Proxy object.
 That object can be used to access the state of your application.
 
 When accessing an object inside the state, you can modify its properties directly and the state will be updated automatically.
 
 ```typescript
-import { proxZ } from 'proxz';
+import { proxzy } from 'proxzy';
 
-const state = proxZ({
+const state = proxzy({
   user: {
     name: 'John Doe',
     age: 25,
@@ -38,9 +38,9 @@ To make the state reactive, you can use the `useSnapshot` hook to subscribe to t
 the state changes.
 
 ```tsx
-import { useSnapshot } from 'proxz';
+import { useSnapshot } from 'proxzy';
 
-const state = proxZ({
+const state = proxzy({
   count: 0,
 });
 
@@ -59,9 +59,9 @@ function Counter() {
 The `useSnapshot` hook can also be used to make parts of the state reactive.
 
 ```tsx
-import { useSnapshot } from 'proxz';
+import { useSnapshot } from 'proxzy';
 
-const state = proxZ({
+const state = proxzy({
   user: {
     name: 'John Doe',
     age: 25,

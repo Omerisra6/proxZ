@@ -1,8 +1,8 @@
 import React from 'react';
-import { proxZ, useSnapshot } from '../../index';
+import { proxzy, useSnapshot } from '../../index';
 
 const obj = { name: { first: 'John', last: 'Doe' } };
-const state = proxZ(obj);
+const state = proxzy(obj);
 
 const MockUser = () => {
 	const snap = useSnapshot(state.name);

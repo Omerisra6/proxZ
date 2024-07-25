@@ -1,15 +1,15 @@
 import React from 'react'; // Import React
 import { describe, expect, it } from 'vitest';
-import { proxZ } from '../index';
+import { proxzy } from '../index';
 import { act, render } from '@testing-library/react';
 import MockUser from './mocks/mock-user';
 
-describe('proxZ', () => {
-	describe('proxZ function', () => {
+describe('proxzy', () => {
+	describe('proxzy function', () => {
 		it('should update the proxy when a property is changed', () => {
 			// Arrange
 			const obj = { count: 1 };
-			const state = proxZ(obj);
+			const state = proxzy(obj);
 
 			// Act
 			state.count++;
@@ -21,7 +21,7 @@ describe('proxZ', () => {
 		it('should update the proxy when a deconstructed object is changed', () => {
 			// Arrange
 			const obj = { user: { name: 'John' } };
-			const state = proxZ(obj);
+			const state = proxzy(obj);
 
 			// Act
 			const { user } = state;

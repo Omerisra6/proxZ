@@ -3,7 +3,7 @@ import { useEffect, useReducer } from 'react';
 const hasProxySymbol = Symbol('hasProxy');
 const subscribersSymbol = Symbol('subscribers');
 
-export const proxZ = <T extends Record<string, any>>(target: T) => {
+export const proxzy = <T extends Record<string, any>>(target: T) => {
 	return new Proxy<T>(target, handler);
 };
 
