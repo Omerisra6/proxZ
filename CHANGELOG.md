@@ -1,5 +1,11 @@
 # proxZ
 
+## 0.1.3
+
+### Patch Changes
+
+- 59da54b: proxz changed to proxzy
+
 ## 0.1.2
 
 ### Patch Changes
