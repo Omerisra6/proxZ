@@ -1,7 +1,7 @@
 {
 	"name": "proxZ",
 	"description": "A simple proxy-state management library",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"author": "Omerisra6",
 	"license": "MIT",
 	"repository": {
