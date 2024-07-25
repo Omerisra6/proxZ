@@ -15,6 +15,7 @@
 
 		"module": "preserve",
 		"noEmit": true,
-		"lib": ["ESNext", "dom", "dom.iterable"]
+		"lib": ["ESNext", "dom", "dom.iterable"],
+		"jsx": "react"
 	}
 }

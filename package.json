@@ -1,12 +1,12 @@
 {
-	"name": "create-typescript-package",
-	"description": "A template project for developing & publishing TypeScript packages",
+	"name": "proxZ",
+	"description": "A simple proxy-state management library",
 	"version": "0.0.0",
-	"author": "StyleShit",
+	"author": "Omerisra6",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/StyleShit/create-typescript-package"
+		"url": "https://github.com/omerisra6/proxZ"
 	},
 	"type": "module",
 	"main": "dist/index.cjs",
@@ -37,15 +37,23 @@
 	"devDependencies": {
 		"@changesets/cli": "^2.27.6",
 		"@eslint/js": "^9.6.0",
+		"@testing-library/jest-dom": "^6.4.8",
+		"@testing-library/react": "^16.0.0",
 		"@types/eslint__js": "^8.42.3",
+		"@types/react": "^18.3.3",
 		"@vitest/coverage-v8": "^1.5.2",
 		"concurrently": "^8.2.2",
 		"eslint": "^8.57.0",
 		"globals": "^15.6.0",
+		"jsdom": "^24.1.1",
 		"prettier": "^3.3.2",
 		"tsup": "^8.1.0",
 		"typescript": "^5.5.3",
 		"typescript-eslint": "^7.16.0",
 		"vitest": "^1.5.2"
+	},
+	"dependencies": {
+		"react": "^18.3.1",
+		"react-testing-library": "^8.0.1"
 	}
 }

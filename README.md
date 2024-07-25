@@ -1,60 +1,81 @@
-# Create TypeScript Package
+# ProxZ
 
-A template project for developing & publishing TypeScript packages.
+ProxZ is a fully types simple state management library that uses the Proxy API to manage the state of your application.
 
-## Configuration
+## Installation
 
-1. Replace the package name, description, author, license, etc. in the [package.json](./package.json) with your package's details
+```bash
+npm install proxz
+```
 
-2. Update this [README.md](./README.md) file to contain your package's documentation
+## Usage
 
-3. Update the [release.yml](.github/workflows/release.yml) workflow to check for your username when publishing (this is used to prevent the workflow from running in forks):
+The `proxZ` function takes an object as an argument and returns a Proxy object.
+That object can be used to access the state of your application.
 
-   ```yaml
-   if: startsWith(github.repository, '{your-username}/')
-   ```
+When accessing an object inside the state, you can modify its properties directly and the state will be updated automatically.
 
-4. Configure `GITHUB_TOKEN` to have the permissions to create Pull Requests:
+```typescript
+import { proxZ } from 'proxz';
 
-   1. Go to https://github.com/{owner}/{repo}/settings/actions
-   2. Check "Allow GitHub Actions to create and approve pull requests" under "Workflow permissions"
+const state = proxZ({
+  user: {
+    name: 'John Doe',
+    age: 25,
+  },
+});
 
-5. Add `NPM_TOKEN` to your Repository secrets:
+const user = state.user;
 
-   1. Go to NPM's [Access Tokens](https://www.npmjs.com/settings/styleshit/tokens) page
-   2. Click "Generate New Token" -> "Classic Token" and follow the instructions (make sure to choose "Automation" for the token type)
-   3. Go to https://github.com/{owner}/{repo}/settings/secrets/actions, and add the generated token as a secret named `NPM_TOKEN`
+user.name = 'Not Jane Doe';
 
-## Structure
+console.log(state.user.name); // Not Jane Doe
+```
 
-- `src/` - TypeScript source files
-- `**/__tests__/` - Test files
-- `dist/` - Compiled JavaScript files
+### Using with React
 
-## Tools
+To make the state reactive, you can use the `useSnapshot` hook to subscribe to the state and update the component when
+the state changes.
 
-This template uses [tsup](https://tsup.egoist.dev/) for transpiling & bundling,
-[Vitest](https://vitest.dev/) for testing,
-[ESLint](https://eslint.org/) & [TypeScript ESLint](https://typescript-eslint.io/) (with the strictest configuration) for linting,
-[Prettier](https://prettier.io/) for formatting,
-and [Changesets](https://github.com/changesets/changesets) for versioning & publishing.
+```tsx
+import { useSnapshot } from 'proxz';
 
-## Development Flow
+const state = proxZ({
+  count: 0,
+});
 
-1. Add your code & tests to the `src/` directory
+function Counter() {
+  const snap = useSnapshot(state);
 
-2. Use `npm run test` to run the tests
+  return (
+    <div>
+      <h1>{snap.count}</h1>
+      <button onClick={() => snap.count++}>Increment</button>
+    </div>
+  );
+}
+```
 
-3. Use `npm run lint` to lint the code
+The `useSnapshot` hook can also be used to make parts of the state reactive.
 
-4. Use `npm run format` to format the code
+```tsx
+import { useSnapshot } from 'proxz';
 
-5. Use `npm run build` to build the package
+const state = proxZ({
+  user: {
+    name: 'John Doe',
+    age: 25,
+  },
+});
 
-6. Run `npx changeset` each time you want to add a commit to the changelog (see [Using Changesets](https://github.com/changesets/changesets/blob/main/docs/intro-to-using-changesets.md#using-changesets) for more info)
+function User() {
+  const snap = useSnapshot(state.user);
 
-7. Commit & push your changes
-
-8. The CI will automatically open a PR with the changes, or add the changes to an existing PR
-
-9. Review & merge the PR when you're ready to publish the package
+  return (
+    <div>
+      <h1>{snap.name}</h1>
+      <button onClick={() => (snap.name = 'Not Jane Doe')}>Change Name</button>
+    </div>
+  );
+}
+```
