@@ -30,6 +30,21 @@ describe('proxzy', () => {
 			// Assert
 			expect(state.user.name).toBe('Jane');
 		});
+
+		it( 'should update all inner proxies when an inner proxy is changed', () => {
+			// Arrange
+			const obj = { user: { name: { first: 'John', last: 'Doe', location: { city: 'New York' } } } };
+			const state = proxzy(obj);
+
+			// Act
+			const { name } = state.user;
+			const { location } = name;
+			location.city = 'Los Angeles';
+
+			// Assert
+			expect(name.location.city).toBe('Los Angeles');
+			expect(state.user.name.location.city).toBe('Los Angeles');
+		});
 	});
 
 	describe('useSnapshot function', () => {
